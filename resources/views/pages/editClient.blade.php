@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Изменение данных о клиенте</h1>
-    {!! Form::open(['action' => ['DBController@saveEditClient', $client[0]->client_id ], 'method' => 'post']) !!}
+    {!! Form::open(['action' => ['ClientsController@saveEditClient', $client[0]->client_id ], 'method' => 'post']) !!}
         <div class='form-group'>
             {{Form::label('name', 'Client`s name: ' )}}
             {{Form::text('name', $client[0]->name , ['class' => 'form-control'] )}}

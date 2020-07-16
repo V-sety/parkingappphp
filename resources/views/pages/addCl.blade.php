@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Добавить клиента: </h1>
-    {!! Form::open(['action' => 'DBController@saveInfo', 'method' => 'post']) !!}
+    {!! Form::open(['action' => 'ClientsController@saveInfo', 'method' => 'post']) !!}
         <div class='form-group'>
             {{Form::label('name', 'Имя: ' )}}
             {{Form::text('name', '', ['class' => 'form-control'] )}}

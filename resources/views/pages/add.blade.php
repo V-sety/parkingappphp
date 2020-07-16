@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Добавить автомобиль: </h1>
-    {!! Form::open(['action' => 'DBController@saveCar', 'method' => 'post']) !!}
+    {!! Form::open(['action' => 'CarsController@saveCar', 'method' => 'post']) !!}
         <div class='form-group'>
             {{Form::label('slate', 'Номер: ' )}}
             {{Form::text('slate', '', ['class' => 'form-control'] )}}

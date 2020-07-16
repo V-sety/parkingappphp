@@ -1,7 +1,7 @@
 @extends('layouts.myapp')
 @section('content')
 <h1>Добавить машину на стоянку</h1>
-{!! Form::open(['action' => 'DBController@parkCar', 'method' => 'post']) !!}
+{!! Form::open(['action' => 'CarsController@parkCar', 'method' => 'post']) !!}
     <div class='form-group'>
             {{Form::label('client_id', 'Выберите владельца: ' )}}
             <select name='client_id' class='form-control' >

@@ -12,7 +12,7 @@
                         <td>
                         <a href="/clients/{{$client->client_id}}/edit" class='btn btn-warning float-right'>Редактировать</a>
 
-                        {!! Form::open(['action' => ['DBController@deleteClient', $client->client_id ], 'method' => 'post', 'class'=>'float-right']) !!}
+                        {!! Form::open(['action' => ['ClientsController@deleteClient', $client->client_id ], 'method' => 'post', 'class'=>'float-right']) !!}
                             {{Form::hidden('_method', 'delete')}}
                             {{Form::submit('Удалить', ['class' => 'btn btn-danger'])}}
                         {!!Form::close()!!}

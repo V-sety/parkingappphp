@@ -13,7 +13,7 @@
                         <td>
                         <a href="/clients/car/{{$car->slate}}/edit" class='btn btn-warning float-right'>Редактировать</a>
 
-                        {!! Form::open(['action' => ['DBController@deleteCar', $car->slate ], 'method' => 'post', 'class'=>'float-right']) !!}
+                        {!! Form::open(['action' => ['CarsController@deleteCar', $car->slate ], 'method' => 'post', 'class'=>'float-right']) !!}
                             {{Form::hidden('_method', 'delete')}}
                             {{Form::submit('Удалить', ['class' => 'btn btn-danger'])}}
                         {!!Form::close()!!}
