@@ -5,42 +5,57 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Car;
+use App\Client;
 
 class PagesController extends Controller
 {
     public function index(){
-        $cars= DB::table('cars')->where('parked', true)->paginate(3);
-        $clients = DB::table('clients')->get();
+        $modelClient = new Client();
+        $modelCar = new Car();
+
+        $cars = $modelCar->getParkedpag();
+        $clients = $modelClient->getAll();
         
         return view('pages.index')->with('cars', $cars)->with( 'clients', $clients);
     }
 
     public function clients(){
-        $clients = DB::table('clients')->paginate(3);
+        $model = new Client();
+        $clients = $model->getAllpag();
         return view('pages.clients')->with('clients', $clients);
     }
 
     public function add(){
-        $clients = DB::table('clients')->select('client_id', 'name')->get();
+        $model = new Client();
+        $clients = $model->getIDandName();
         return view('pages.add')->with('clients', $clients);
     }
     public function showCars($id){
-        $currentCars = DB::table('cars')->where('client_id', $id)->paginate(3);
-        $client = DB::table('clients')->where('client_id', $id)->get();
+        $modelClient = new Client();
+        $modelCar = new Car();
+
+        $currentCars = $modelCar->getCarsOfaClientpag($id);
+        $client = $modelClient->getClientbyID($id);
+
         return view('pages.currentCars')->with('currentCars', $currentCars)->with('client', $client);
     }
     public function editClient($id){
-        $client = DB::table('clients')->where('client_id', $id)->get();
+        $model = new Client();
+        $client = $model->getClientbyID($id);
         return view('pages.editClient')->with('client', $client);
 
     }
     public function editCar($slate){
-        $car = DB::table('cars')->where('slate', $slate)->get();
-        $clients = DB::table('clients')->select('client_id', 'name')->get();
+        $modelClient = new Client();
+        $modelCar = new Car();
+
+        $car = $modelCar->getCarbySlate($slate);
+        $clients = $modelClient->getIDandName();
         return view('pages.editCar')->with('car', $car)->with('clients', $clients);
     }
     public function park(){
-        $clients = DB::table('clients')->get();
+        $model = new Client();
+        $clients = $model->getAll();
         return view('pages.park')->with('clients', $clients);
     }
 }
